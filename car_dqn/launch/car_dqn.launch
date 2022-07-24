@@ -1,0 +1,25 @@
+<launch>
+	<!-- Launches Joystick -->
+	<node name="joy_node" pkg="joy" type="joy_node" output="screen" clear_params="true">
+		<param name="dev" type="str" value="/dev/input/js0"/>
+	</node>
+	
+	<!-- Launches drivebywire -->
+	<node name="car_dqn" pkg="car_dqn" type="car_dqn_2.py" output="screen" required="true">
+		<!-- Configures the joystick button mapping -->
+		<param name="ButtonReverse"	      value="0" />
+		<param name="ButtonJoyPadControl"     value="3" />
+		<param name="ButtonBrake"             value="1" />
+		<param name="ButtonReset"             value="2" />
+
+		<!-- Configures the joystick axis mapping -->
+		<param name="AxisSteer"			value="0" />
+		<param name="AxisThrottle"	        value="3" />
+
+		<!-- Configures the joystick mapping -->
+		<param name="ScaleRoll"			value="1" />
+		<param name="ScalePitch"		value="1" />
+		<param name="ScaleYaw"			value="1" />
+		<param name="ScaleZ"			value="1" />
+	</node>
+</launch>
